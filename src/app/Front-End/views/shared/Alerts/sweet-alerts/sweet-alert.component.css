@@ -1,0 +1,12 @@
+.custom-swal-container {
+    z-index: 9999; /* Ensure it appears above other elements */
+  }
+  
+  .custom-swal-title {
+    font-weight: bold;
+  }
+  
+  .custom-swal-content {
+    font-size: 16px;
+  }
+  

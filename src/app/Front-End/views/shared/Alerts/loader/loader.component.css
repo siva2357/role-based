@@ -1,0 +1,16 @@
+/* Ensure the spinner container takes up the entire viewport */
+.spinner-wrapper {
+    height: 100vh; /* Full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+}
+
+/* Optional: Customize spinner size and color */
+.spinner-border {
+    width: 3rem;
+    height: 3rem;
+    border-width: 0.3rem;
+}
+
+.spinner-border.text-primary {
+    color: black; /* Bootstrap primary color */
+}

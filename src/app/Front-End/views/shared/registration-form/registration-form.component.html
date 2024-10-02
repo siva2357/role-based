@@ -1,0 +1,98 @@
+<div class="container-sm">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <div class="card centered-form mt-5">
+        <div class="card-body justify-content-center">
+
+          <div *ngIf="step === 1">
+            <form [formGroup]="signupDetails" (ngSubmit)="next()">
+              <div class="container">
+                <h4 class="text-center mb-5">Signup Details</h4>
+              </div>
+
+              <!-- Full Name -->
+              <div class="form-group row align-items-center mt-3">
+                  <input placeholder="Full Name" id="fullName" formControlName="fullName" type="text" class="form-control" pattern="[A-Z][a-zA-Z]*" title="Full name should start with a capital letter and contain only letters" style="height: 45px; border-radius: 10px;" />
+              </div>
+
+              <!-- Username -->
+              <div class="form-group row align-items-center mt-3">
+                  <input placeholder="Username" id="userName" formControlName="userName" type="text" class="form-control rounded-3" pattern="[A-Za-z0-9]+" title="Username can only contain letters and numbers" style="height: 45px; border-radius: 10px;"  />
+              </div>
+
+
+              <div class="form-group row align-items-center mt-3">
+                  <input placeholder="Email address" id="email" formControlName="email" type="text" class="form-control rounded-3" style="height: 45px; border-radius: 10px;" />
+              </div>
+
+              <div class="form-group row align-items-center mt-3">
+                  <input placeholder="Create Password" id="password" formControlName="password" type="password" class="form-control rounded-3" style="height: 45px; border-radius: 10px;" />
+              </div>
+
+
+              <div class="form-group row align-items-center mt-3">
+                  <input placeholder="Confirm Password" id="confirmPassword" formControlName="confirmPassword" type="password" class="form-control rounded-3" style="height: 45px; border-radius: 10px;" />
+              </div>
+
+
+              <div class="container buttons mt-3">
+                <button class="btn btn-secondary"  (click)="back()">Back</button>
+                <button type="submit" class="btn btn-primary">Next</button>
+              </div>
+
+            </form>
+
+            <div class="col-12 justify-content-center">
+              <p class="mb-0 text-center fs-6">Already a member? <span class="text-primary" (click)="LoginPage()"style="cursor: pointer;">Login</span></p>
+            </div>
+          </div>
+
+          <div *ngIf="step === 2">
+            <form [formGroup]="profileDetails" (ngSubmit)="submit()">
+
+              <div class="container">
+                <h4 class="text-center mb-5">Profile Upload</h4>
+              </div>
+
+              <div class="form-group col text-center " class="step-container">
+                <div class="card-profile-body   rounded-4 profile-container ">
+                  <div class="profile-avatar rounded-circle">
+                    <img id="avatarImage"
+                      [src]="profileUploadUrl || 'https://res.cloudinary.com/dpp8aspqs/image/upload/v1726392723/person-circle_vlacco_2_k9fuwa.svg'"
+                      alt="Avatar">
+                  </div>
+                </div>
+
+
+                <button type="button" class="btn btn-outline-secondary rounded-3 mt-3 upload-button px-3">
+                  <label for="profileUpload" class="upload-icon d-flex align-items-center" title="Upload">
+                    <i class="bi bi-cloud-arrow-up upload-icon-style"></i>
+                    <span class="upload-text">Upload</span>
+                  </label>
+                  <input type="file" #fileInput id="profileUpload" class="d-none" formControlName="profileUpload" (change)="handleFileUpload($event)">
+                </button>
+                
+                
+                <!-- <button *ngIf="isImageUploaded" type="button" class="btn btn-outline-danger rounded-3 mt-3" (click)="removePhoto()">Remove Photo</button> -->
+                
+              </div>
+
+              <div class="container mt-3 buttons">
+                <button (click)="previous()" class="btn btn-secondary">Previous</button>
+                <button type="submit" class="btn btn-primary" [disabled]="profileDetails.invalid">Submit</button>
+              </div>
+
+            </form>
+            <div class="col-12 justify-content-center">
+              <p class="mb-0 text-center fs-6 "> Already a member? <span class="text-primary" (click)=" LoginPage()"
+                  style="cursor: pointer;">Login</span></p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
